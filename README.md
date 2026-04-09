@@ -150,4 +150,4 @@ Because training uses randomized synthetic data, values can vary per run.
 - per-relay model personalization
 - anomaly explanation panel (feature contribution)
 - maintenance work-order export and alert acknowledgements
-- historical replay mode for demos
+- historical replay mode for demos.

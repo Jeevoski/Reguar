@@ -1,20 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap');
 
 :root {
-  --bg: #050d1b;
-  --bg-2: #06142b;
-  --text: #d9e8ff;
-  --muted: #89a3c9;
-  --surface: rgba(10, 24, 46, 0.76);
-  --surface-strong: rgba(12, 30, 58, 0.9);
-  --surface-border: rgba(129, 164, 214, 0.24);
-  --line-soft: rgba(129, 164, 214, 0.18);
-  --line-strong: rgba(129, 164, 214, 0.34);
-  --accent: #57a5ff;
-  --accent-2: #3dd9a7;
-  --danger: #ff5b7f;
-  --warning: #ffbe55;
-  --healthy: #3dd9a7;
+  --bg: #0a0506;
+  --bg-2: #130809;
+  --text: #f4dde1;
+  --muted: #c59aa3;
+  --surface: rgba(32, 10, 14, 0.78);
+  --surface-strong: rgba(45, 13, 18, 0.9);
+  --surface-border: rgba(210, 92, 111, 0.32);
+  --line-soft: rgba(210, 92, 111, 0.22);
+  --line-strong: rgba(210, 92, 111, 0.42);
+  --accent: #e5485f;
+  --accent-2: #ff7a45;
+  --danger: #ff4d66;
+  --warning: #ff9c4a;
+  --healthy: #ff7a45;
   --radius: 14px;
   font-family: 'IBM Plex Sans', sans-serif;
   text-rendering: optimizeLegibility;
@@ -36,9 +36,9 @@ body,
 body {
   color: var(--text);
   background:
-    radial-gradient(1000px 420px at 8% -8%, #18488f 0%, transparent 58%),
-    radial-gradient(820px 380px at 105% 0%, #5b1f3f 0%, transparent 60%),
-    linear-gradient(180deg, #060e1d 0%, #050a14 100%);
+    radial-gradient(980px 420px at 8% -10%, #551016 0%, transparent 58%),
+    radial-gradient(820px 380px at 105% 0%, #2b060a 0%, transparent 60%),
+    linear-gradient(180deg, #110506 0%, #060203 100%);
 }
 
 h1,
@@ -79,7 +79,7 @@ a {
   z-index: 40;
   padding: 26px 18px;
   border-right: 1px solid var(--surface-border);
-  background: linear-gradient(180deg, rgba(6, 20, 44, 0.86) 0%, rgba(5, 17, 36, 0.94) 100%);
+  background: linear-gradient(180deg, rgba(36, 10, 15, 0.9) 0%, rgba(20, 7, 10, 0.96) 100%);
   backdrop-filter: blur(8px);
   display: flex;
   flex-direction: column;
@@ -137,19 +137,19 @@ a {
   padding: 10px 12px;
   border: 1px solid transparent;
   border-radius: 12px;
-  color: #b3c8e8;
+  color: #e5bcc5;
   transition: all 0.18s ease;
 }
 
 .nav-item:hover {
-  border-color: rgba(136, 169, 221, 0.24);
-  background: rgba(19, 38, 70, 0.5);
+  border-color: rgba(220, 111, 129, 0.34);
+  background: rgba(84, 22, 31, 0.42);
 }
 
 .nav-item.active {
-  border-color: rgba(87, 165, 255, 0.55);
-  background: linear-gradient(95deg, rgba(31, 83, 153, 0.46), rgba(25, 58, 109, 0.2));
-  color: #f3f8ff;
+  border-color: rgba(229, 72, 95, 0.62);
+  background: linear-gradient(95deg, rgba(151, 34, 53, 0.58), rgba(97, 20, 34, 0.28));
+  color: #ffeef1;
 }
 
 .sidebar-footer {
@@ -157,7 +157,7 @@ a {
   display: flex;
   align-items: center;
   gap: 8px;
-  color: #abc0de;
+  color: #e0b4bc;
   font-size: 13px;
 }
 
@@ -168,8 +168,8 @@ a {
 }
 
 .dot.online {
-  background: #34d399;
-  box-shadow: 0 0 12px rgba(52, 211, 153, 0.85);
+  background: #ff7a45;
+  box-shadow: 0 0 12px rgba(255, 122, 69, 0.72);
 }
 
 .main-wrap {
@@ -179,16 +179,16 @@ a {
 .sidebar-close {
   margin-top: 14px;
   border-radius: 10px;
-  border: 1px solid rgba(128, 160, 204, 0.44);
-  background: rgba(17, 39, 69, 0.8);
-  color: #d6e7ff;
+  border: 1px solid rgba(216, 98, 118, 0.46);
+  background: rgba(65, 16, 24, 0.8);
+  color: #ffe5ea;
   padding: 8px 10px;
   cursor: pointer;
 }
 
 .topbar {
   border: 1px solid var(--surface-border);
-  background: rgba(9, 26, 50, 0.78);
+  background: rgba(35, 10, 15, 0.78);
   border-radius: var(--radius);
   padding: 14px 18px;
   display: flex;
@@ -223,23 +223,23 @@ a {
   letter-spacing: 0.04em;
   border-radius: 999px;
   padding: 6px 10px;
-  background: rgba(41, 96, 170, 0.6);
-  border: 1px solid rgba(87, 165, 255, 0.45);
+  background: rgba(149, 37, 54, 0.6);
+  border: 1px solid rgba(229, 72, 95, 0.5);
 }
 
 .pill.muted {
-  background: rgba(61, 217, 167, 0.15);
-  border-color: rgba(61, 217, 167, 0.4);
+  background: rgba(255, 122, 69, 0.15);
+  border-color: rgba(255, 122, 69, 0.45);
 }
 
 .clock-chip {
   border-radius: 999px;
-  border: 1px solid rgba(135, 164, 205, 0.35);
+  border: 1px solid rgba(214, 100, 119, 0.42);
   padding: 6px 10px;
   display: flex;
   align-items: center;
   gap: 6px;
-  color: #b9cce8;
+  color: #efc8cf;
   font-size: 12px;
 }
 
@@ -247,9 +247,9 @@ a {
   width: 34px;
   height: 34px;
   border-radius: 11px;
-  border: 1px solid rgba(135, 164, 205, 0.35);
+  border: 1px solid rgba(214, 100, 119, 0.42);
   background: transparent;
-  color: #d7e6ff;
+  color: #ffe7eb;
   display: grid;
   place-items: center;
   position: relative;

@@ -1,11 +1,21 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="Reguar logo">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="Reguar sun logo">
   <defs>
-    <linearGradient id="rg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#22d3ee"/>
-      <stop offset="100%" stop-color="#2563eb"/>
+    <linearGradient id="sunGlow" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffb067"/>
+      <stop offset="50%" stop-color="#ff6e45"/>
+      <stop offset="100%" stop-color="#e5485f"/>
     </linearGradient>
   </defs>
-  <rect x="6" y="6" width="84" height="84" rx="18" fill="#071427"/>
-  <path d="M24 69V27h24c12 0 20 8 20 18 0 7-4 13-10 16l12 8H58L48 62H36v7H24zm12-19h12c5 0 8-3 8-7s-3-7-8-7H36v14z" fill="url(#rg)"/>
-  <circle cx="72" cy="72" r="7" fill="#22d3ee"/>
+  <rect x="6" y="6" width="84" height="84" rx="18" fill="#100406"/>
+  <circle cx="48" cy="48" r="15" fill="url(#sunGlow)"/>
+  <g stroke="url(#sunGlow)" stroke-width="4" stroke-linecap="round">
+    <line x1="48" y1="18" x2="48" y2="28"/>
+    <line x1="48" y1="68" x2="48" y2="78"/>
+    <line x1="18" y1="48" x2="28" y2="48"/>
+    <line x1="68" y1="48" x2="78" y2="48"/>
+    <line x1="26" y1="26" x2="33" y2="33"/>
+    <line x1="63" y1="63" x2="70" y2="70"/>
+    <line x1="26" y1="70" x2="33" y2="63"/>
+    <line x1="63" y1="33" x2="70" y2="26"/>
+  </g>
 </svg>

@@ -66,8 +66,8 @@ export function DashboardPage() {
                 <XAxis dataKey="id" tick={{ fill: '#8ea7ca', fontSize: 11 }} />
                 <YAxis tick={{ fill: '#8ea7ca', fontSize: 11 }} />
                 <Tooltip />
-                <Bar dataKey="temp" fill="#57a5ff" radius={[6, 6, 0, 0]} />
-                <Bar dataKey="load" fill="#3dd9a7" radius={[6, 6, 0, 0]} />
+                <Bar dataKey="temp" fill="#d7263d" radius={[6, 6, 0, 0]} />
+                <Bar dataKey="load" fill="#f07b7b" radius={[6, 6, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </div>

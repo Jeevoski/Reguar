@@ -7,7 +7,6 @@ import { CustomerCarePage } from './pages/CustomerCarePage';
 import { DashboardPage } from './pages/DashboardPage';
 import { FleetPage } from './pages/FleetPage';
 import { InverterDetailPage } from './pages/InverterDetailPage';
-import { LoginPage } from './pages/LoginPage';
 import { MaintenancePage } from './pages/MaintenancePage';
 import { ReportsPage } from './pages/ReportsPage';
 import { SettingsPage } from './pages/SettingsPage';
@@ -40,8 +39,8 @@ export default function App() {
   return (
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/" element={<Navigate to="/login" replace />} />
+        <Route path="/login" element={<Navigate to="/dashboard" replace />} />
+        <Route path="/" element={<Navigate to="/dashboard" replace />} />
 
         <Route path="/" element={<AppShell />}>
           <Route path="dashboard" element={<AnimatedPage><DashboardPage /></AnimatedPage>} />

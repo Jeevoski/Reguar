@@ -71,6 +71,19 @@ function nextInverterId() {
   return `INV-${String(idx).padStart(3, '0')}`;
 }
 
+function categorizeStatus(predictedRulPct, tempC) {
+  const rul = Number(predictedRulPct ?? 100);
+  const temp = Number(tempC ?? 30);
+
+  if (rul < 25 || temp >= 72) {
+    return 'critical';
+  }
+  if (rul < 55 || temp >= 60) {
+    return 'warning';
+  }
+  return 'healthy';
+}
+
 function clamp(value, min, max) {
   return Math.max(min, Math.min(max, value));
 }
@@ -281,22 +294,27 @@ function maintenanceRecommendation(point) {
 function fleetFromRows(rows) {
   return rows
     .filter((row) => inverterStates.has(row.inverter_id))
-    .map((row) => ({
+    .map((row) => {
+    const predictedRul = row.predicted_rul_pct ?? row.rul_pct_true;
+    const normalizedStatus = categorizeStatus(predictedRul, row.temp_c);
+
+    return ({
     inverter_id: row.inverter_id,
-    status: row.status,
-    predicted_status: row.status,
+    status: normalizedStatus,
+    predicted_status: normalizedStatus,
     cycle_count: row.cycle_count,
     rul_pct_true: row.rul_pct_true,
-    predicted_rul_pct: row.predicted_rul_pct ?? row.rul_pct_true,
+    predicted_rul_pct: predictedRul,
     temp_c: row.temp_c,
     current_rms: row.current_rms,
     voltage_rms: row.voltage_rms,
     humidity_pct: row.humidity_pct,
     load_pct: row.load_pct,
     data_origin: row.data_origin || 'simulation',
-    last_alert: row.status === 'critical' ? new Date(row.ts).toISOString() : null,
+    last_alert: normalizedStatus === 'critical' ? new Date(row.ts).toISOString() : null,
     ts: row.ts,
-  }));
+  });
+  });
 }
 
 async function oneSimulationTick() {
@@ -327,7 +345,7 @@ async function oneSimulationTick() {
       ...sample,
       predicted_rul_pct: prediction.predictedRulPct,
       data_origin: simulation.mode === 'hardware' ? `hardware:${hardwareAdapter.mode}` : 'simulation',
-      status: prediction.predictedStatus,
+      status: categorizeStatus(prediction.predictedRulPct, sample.temp_c),
     };
     await insertTelemetry(finalizedPoint);
     await insertRealtimeRul({
@@ -613,7 +631,7 @@ app.post('/api/sensors/ingest', async (req, res) => {
   const finalizedPoint = {
     ...sensorPoint,
     predicted_rul_pct: prediction.predictedRulPct,
-    status: prediction.predictedStatus,
+    status: categorizeStatus(prediction.predictedRulPct, sensorPoint.temp_c),
     data_origin: `sensor:${adapterMode}`,
   };
 

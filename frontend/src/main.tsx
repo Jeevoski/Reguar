@@ -16,7 +16,14 @@ const theme = createTheme({
     },
   },
   palette: {
-    mode: 'dark',
+    mode: 'light',
+    primary: {
+      main: '#d7263d',
+    },
+    background: {
+      default: '#fff8f8',
+      paper: '#ffffff',
+    },
   },
 });
 

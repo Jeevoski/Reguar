@@ -3,6 +3,15 @@ import { useRealtime } from '../hooks/useRealtime';
 import { api } from '../services/api';
 import type { FleetItem, ServiceAlert } from '../types/domain';
 
+function classForLevel(level: string) {
+  const normalized = String(level || '').toLowerCase();
+  if (normalized === 'critical') return 'critical';
+  if (normalized === 'warning') return 'warning';
+  if (normalized === 'medium') return 'medium';
+  if (normalized === 'low') return 'healthy';
+  return 'info';
+}
+
 export function AlertsPage() {
   const [alerts, setAlerts] = useState<ServiceAlert[]>([]);
   const [fleet, setFleet] = useState<FleetItem[]>([]);
@@ -67,7 +76,7 @@ export function AlertsPage() {
           {runtimeAlerts.length === 0 && <li>No live events yet. Alerts will stream in realtime.</li>}
           {runtimeAlerts.map((event) => (
             <li key={`${event.inverter_id}-${event.ts}`}>
-              <span className={`status ${event.level === 'critical' ? 'critical' : 'warning'}`}>{event.level}</span>{' '}
+              <span className={`status ${classForLevel(event.level)}`}>{event.level}</span>{' '}
               {event.inverter_id} | {event.message}
             </li>
           ))}
@@ -88,7 +97,7 @@ export function AlertsPage() {
               return (
                 <tr key={a.id}>
                   <td>{a.inverter_id}</td>
-                  <td><span className={`status ${a.priority === 'critical' ? 'critical' : 'warning'}`}>{a.priority}</span></td>
+                  <td><span className={`status ${classForLevel(a.priority)}`}>{a.priority}</span></td>
                   <td>{a.rul_pct.toFixed(1)}%</td>
                   <td>{a.temp_c.toFixed(1)}°C</td>
                   <td>{latest ? `${latest.current_rms.toFixed(1)}A` : '-'}</td>

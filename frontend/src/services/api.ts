@@ -11,8 +11,17 @@ import type {
   TelemetryPoint,
 } from '../types/domain';
 
+const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL || '').replace(/\/$/, '');
+
+function buildUrl(path: string): string {
+  if (/^https?:\/\//i.test(path)) {
+    return path;
+  }
+  return API_BASE_URL ? `${API_BASE_URL}${path}` : path;
+}
+
 async function request<T>(url: string, init?: RequestInit): Promise<T> {
-  const res = await fetch(url, {
+  const res = await fetch(buildUrl(url), {
     headers: {
       'Content-Type': 'application/json',
       ...(init?.headers || {}),

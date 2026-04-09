@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import { io } from 'socket.io-client';
 import type { Communication, FleetItem, RealtimeRulPoint, SensorConnection, ServiceAlert, SourceState, TelemetryPoint } from '../types/domain';
 
-const socketEndpoint = import.meta.env.VITE_SOCKET_URL || 'http://localhost:4000';
+const socketEndpoint = import.meta.env.VITE_SOCKET_URL || window.location.origin;
 
 export function useRealtime(handlers: {
   onFleetUpdate?: (payload: FleetItem[]) => void;
